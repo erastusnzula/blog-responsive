@@ -1,0 +1,1 @@
+from blog.views.downloads import all_downloads
