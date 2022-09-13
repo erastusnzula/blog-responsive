@@ -7,8 +7,8 @@
     --secondary-color: hsl(var(--hue-color), 100%, 30%);
     --divider-color: hsl(var(--hue-color), 9%, 90%);
     --title-color: hsl(var(--hue-color), 15% 15%);
-    --text-color: hsl(var(--hue-color), 10%, 20%);
-    --body-background-color : hsl(var(--hue-color), 0%, 96%);
+    --text-color: hsl(var(--hue-color), 100%, 10%);
+    --body-background-color : hsl(var(--hue-color), 100%, 99%);
     --link-color: hsl(var(--hue-color), 0%, 99%);
     --link-hover: var(--secondary-color);
     --link-visited: hsl(var(--primary-color), 0%, 90% );
@@ -19,6 +19,10 @@
     --normal-font-weight: 500;
     --medium-font-weight: 700;
     --large-font-weight: 900;
+}
+
+html{
+  scroll-behavior: smooth;
 }
 
 body{

@@ -12,59 +12,63 @@
             <div class="post-category-body">
                 {% for category in categories%}
                 <p>
-                    <a class="post-category" href="{% url 'blog:category' category.name %}">{{forloop.counter}}. {{category.name}}</a>
+                    <a class="post-category" href="{% url 'blog:category' category.name %}">{{forloop.counter}}.
+                        {{category.name}}</a>
                 </p>
                 <span class="recent-divider"></span>
-                
+
                 {% endfor %}
             </div>
         </div>
         <div class="recent-article">
             <div class="recent-article-header">
-                <h3 class="recent-article-title">Recent Artcles </h3>
+                <h3 class="recent-article-title">Recent Articles </h3>
             </div>
             <div class="recent-article-body">
                 {% for post in posts%}
-                <p class=""><a class="recent-article-text" href="{% url 'blog:post-details' post.id %}">{{forloop.counter}}. {{post.title|slice:25}}</a></p>
+                <p class=""><a class="recent-article-text" href="{% url 'blog:post-details' post.id %}">{{forloop.counter}}.
+                    {{post.title|slice:25}}</a></p>
                 <span class="recent-divider"></span>
                 {% endfor %}
             </div>
         </div>
-        
+
     </div>
-    
+
     <div class="posts">
         <form class="search-bar" action="." method='post' enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="text" class="form-control" name="search-title" id="" 
-            placeholder="Search article by title" required>
+            <input type="text" class="form-control" name="search-title" id=""
+                   placeholder="Search article by title" required>
             <button class="search-button">Search</button>
         </form>
         <div class="post-card">
             <div class="card-header">
-                <h1><a class="post-title" href="{% url 'blog:post-details' post.id %}">{{post.title}}</a> </h1>
-                <small>Author: {{post.author}} | Category: <a class="post-category" href="{% url 'blog:category' post.category %}">{{post.category}}</a> | Updated: {{post.updated_on}}</small>
+                <h1><a class="post-title" href="{% url 'blog:post-details' post.id %}">{{post.title}}</a></h1>
+                <small>Author: {{post.author}} | Category: <a class="post-category"
+                                                              href="{% url 'blog:category' post.category %}">{{post.category}}</a>
+                    | Updated: {{post.updated_on}}</small>
             </div>
             <div class="card-body">
                 <p class="body-text">{{post.description|safe }}
                 </p>
             </div>
         </div>
-       
+
         <div class="contact-form">
             <form action="." method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                 <h3 class="comment-title">Leave a comment</h3>
-                 <div class="comment-label">
-                     <label for="fullname">Your name</label>
-                 </div>
-                 <input type="text" name="fullname" id="fullname" class="email" placeholder="" required>
-                 <div class="comment-message-label">
-                     <label for="comment-message">Message</label>
-                 </div>
-                 <textarea class="message" name="comment-message" id="comment-message" rows="10" required></textarea>
-                 <button class="comment-submit" type="submit">Submit</button>
-         </form>
+                <h3 class="comment-title">Leave a comment</h3>
+                <div class="comment-label">
+                    <label for="fullname">Your name</label>
+                </div>
+                <input type="text" name="fullname" id="fullname" class="email" placeholder="" required>
+                <div class="comment-message-label">
+                    <label for="comment-message">Message</label>
+                </div>
+                <textarea class="message" name="comment-message" id="comment-message" rows="10" required></textarea>
+                <button class="comment-submit" type="submit">Submit</button>
+            </form>
         </div>
         <div class="all-comments">
             {% for comment in comments %}
@@ -82,15 +86,14 @@
         </div>
         <nav class="footer">
             <div class="footer-container">
-                
+
                 <ul class="footer-items-left">
-                    
+
                     <li class="footer-item">
                         <p class="copyright"></p>
                     </li>
                 </ul>
-                
-               
+
 
             </div>
         </nav>
@@ -104,13 +107,13 @@
                 <h5 class="about-header">Erastus Nzula</h5>
                 <h5 class="about-header">Software engineer</h5>
                 <a href="https://twitter.com/erastus_nzula?ref_src=twsrc%5Etfw" class="twitter-follow-button"
-                data-show-screen-name="false" data-show-count="false" target="_blank">Follow @erastus_nzula</a>
+                   data-show-screen-name="false" data-show-count="false" target="_blank">Follow @erastus_nzula</a>
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
         </div>
-       <div class="contact-form">
-           <form action="." method="post" enctype="multipart/form-data">
-               {% csrf_token %}
+        <div class="contact-form">
+            <form action="." method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 <h3 class="contact-title">Contact me</h3>
                 <div class="email-label">
                     <label for="email">Email Address</label>
@@ -121,8 +124,8 @@
                 </div>
                 <textarea class="message" name="message" id="message" rows="10" required></textarea>
                 <button class="contact-submit" type="submit">Submit</button>
-        </form>
-       </div>
+            </form>
+        </div>
     </div>
 </div>
 

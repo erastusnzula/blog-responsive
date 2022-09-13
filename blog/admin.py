@@ -16,9 +16,11 @@ class PostAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     pass
+
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
@@ -28,6 +30,7 @@ class ContactAdmin(admin.ModelAdmin):
 @admin.register(NewsLetter)
 class NewsLetterAdmin(admin.ModelAdmin):
     pass
+
 
 @admin.register(Download)
 class DownloadAdmin(admin.ModelAdmin):

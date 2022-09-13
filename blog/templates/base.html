@@ -1,132 +1,135 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-    <head>
-        <link rel="shortcut icon" href="{% static 'favicon/favicon1.ico' %}"/>
-        <title>{%block title %}Home{% endblock %}</title>
-        <meta charset="UTF-8">
-        <meta name="google" content="notranslate"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        <script src="https://kit.fontawesome.com/4605777c76.js" crossorigin="anonymous"></script>
+<head>
+    <link rel="shortcut icon" href="{% static 'favicon/favicon1.ico' %}"/>
+    <title>{%block title %}Home{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/4605777c76.js" crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
-    </head>
-    <body>
-       <nav class="navbar">
-           <div class="container">
-               <div class="navbar-brand">
-                   <a href="/" class="nav-brand"><img class="brand-image" src="{% static 'images/n.png' %}" alt=""></a>
-               </div>
-               <div class="navbar-items">
-                   <ul class="nav-items">
-                       <li class="nav-item">
-                           <a class="nav-link in-small-screen" id="contact-me" href="#contact">Contact me</a>
-                       </li>
-                       <li class="nav-item">
-                           <a class="nav-link" id="subscribe-link" href="#subscribe">subscribe</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link in-small-screen" id="categories-link" href="#Categories">Categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="downloads-link" href="#downloads">Downloads</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link in-small-screen" id="recent-articles-link" href="/">All Articles</a>
-                        </li>
-                       
-                   </ul>
-                   <div class="theme-toggle">
-                           <span class="slider"></span>    
-                   </div>
-
-                   <div class="collapse-toggle">
-                       <span class="collapse-bar"></span>
-                       <span class="collapse-bar"></span>
-                       <span class="collapse-bar"></span>
-                   </div>
-               </div>
-           </div>
-       </nav>
-       <div>
-           {% for message in messages %}
-           <div class="{{message.tags}}" id="messages">
-               <div class="message">
-                   {{message}}
-                </div>
-                <div  class="messages-close-icon" onclick="closeMessages()" id="messages-close-icon">&times;</div>
-            </div>
-            {% endfor %}
+</head>
+<body>
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" class="nav-brand"><img class="brand-image" src="{% static 'images/n.png' %}" alt=""></a>
         </div>
-       <section>
-            <div class="newsletter">
-                <div class="subscribe">
-                    <div class="subscribe-form">
-                        <form action="." method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <h3 class="subscribe-title">Subscribe to my weekly newsletter</h3>
-                            
-                            <input type="email" name="subscribe-email" id="subscribe-email" class="subscribe-email" placeholder="Enter your email address" required>
-                            <div>
-                                <button class="subscribe-submit" type="submit">Subscribe</button>
-                            </div>
-                        </form>
-                        <div  class="subscribe-close-icon" onclick="closeSubscribe()" id="subscribe-close-icon">&times;</div>
-                    </div>
-                    
-                </div>
+        <div class="navbar-items">
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a class="nav-link in-small-screen" id="contact-me" href="#contact">Contact me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="subscribe-link" href="#subscribe">subscribe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link in-small-screen" id="categories-link" href="#Categories">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="downloads-link" href="#downloads">Downloads</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link in-small-screen" id="recent-articles-link" href="/">All Articles</a>
+                </li>
+
+            </ul>
+            <div class="theme-toggle">
+                <span class="slider"></span>
             </div>
-            <div class="downloads" id="downloads">
-                <div class="download">
-                    <div class="download-header">
-                        <h3 class="download-title">Downloads</h3>
-                    </div>
-                    <div class="download-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="table-sn">Sn</th>
-                                    <th>Mobile (apk)</th>
-                                    <th>windows (exe)</th>
-                                    <th class="table-description">Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for download in downloads %}
-                                <tr>
-                                    
-                                    <td class="table-sn" >{{forloop.counter}}
-                                
-                                    <td>
-                                        {% if download.mobile %}
-                                        <a class="download-link" href="{{download.mobile.url}}" download>{{download.filename}}.apk</a>
-                                        {% endif %}
-                                    </td>
-                                    
-                                    <td>
-                                        {% if download.windows %}
-                                        <a class="download-link" href="{{download.windows.url}}" download>{{download.filename}}.exe</a>
-                                        {% endif %}
-                                    </td>
-                                    
-                                    <td  class="table-description">{{download.description}}</td>
-                                   
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                        <div  class="download-close" onclick="closeDownload()" id="download-close">&times;</div>
-                    </div>
-                </div>
+
+            <div class="collapse-toggle">
+                <span class="collapse-bar"></span>
+                <span class="collapse-bar"></span>
+                <span class="collapse-bar"></span>
             </div>
-            {% block content %}
-            {% endblock %}
-       </section>
-        <script src="{% static 'js/main.js' %}"></script>
-    </body>
+        </div>
+    </div>
+</nav>
+<div>
+    {% for message in messages %}
+    <div class="{{message.tags}}" id="messages">
+        <div class="message">
+            {{message}}
+        </div>
+        <div class="messages-close-icon" onclick="closeMessages()" id="messages-close-icon">&times;</div>
+    </div>
+    {% endfor %}
+</div>
+<section>
+    <div class="newsletter">
+        <div class="subscribe">
+            <div class="subscribe-form">
+                <form action="." method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h3 class="subscribe-title">Subscribe to my weekly newsletter</h3>
+
+                    <input type="email" name="subscribe-email" id="subscribe-email" class="subscribe-email"
+                           placeholder="Enter your email address" required>
+                    <div>
+                        <button class="subscribe-submit" type="submit">Subscribe</button>
+                    </div>
+                </form>
+                <div class="subscribe-close-icon" onclick="closeSubscribe()" id="subscribe-close-icon">&times;</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="downloads" id="downloads">
+        <div class="download">
+            <div class="download-header">
+                <h3 class="download-title">Downloads</h3>
+            </div>
+            <div class="download-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="table-sn">Sn</th>
+                        <th>Mobile (apk)</th>
+                        <th>windows (exe)</th>
+                        <th class="table-description">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for download in downloads %}
+                    <tr>
+
+                        <td class="table-sn">{{forloop.counter}}
+
+                        <td>
+                            {% if download.mobile %}
+                            <a class="download-link" href="{{download.mobile.url}}"
+                               download>{{download.filename}}.apk</a>
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if download.windows %}
+                            <a class="download-link" href="{{download.windows.url}}"
+                               download>{{download.filename}}.exe</a>
+                            {% endif %}
+                        </td>
+
+                        <td class="table-description">{{download.description}}</td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="download-close" onclick="closeDownload()" id="download-close">&times;</div>
+            </div>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+</section>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
 </html>
 
