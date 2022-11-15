@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}Downloads{% endblock%}
+
+{% block content %}
+
+<div class="download-reload-page">
+    <div class="download-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="table-sn">Sn</th>
+                    <th>Mobile (apk)</th>
+                    <th>windows (exe)</th>
+                    <th class="table-description">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for download in downloads %}
+                <tr>
+
+                    <td class="table-sn">{{forloop.counter}}</td>
+
+                    <td>
+                        {% if download.mobile %}
+                        <a class="download-link" href="{{download.mobile.url}}"
+                        download>{{download.filename}}.apk</a>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if download.windows %}
+                        <a class="download-link" href="{{download.windows.url}}"
+                        download>{{download.filename}}.exe</a>
+                        {% endif %}
+                    </td>
+
+                    <td class="table-description">{{download.description}}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>     
+    </div>
+</div>
+{% endblock %}

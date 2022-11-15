@@ -6,8 +6,8 @@
     --primary-color: hsl(var(--hue-color), 76%, 50%);
     --secondary-color: hsl(var(--hue-color), 100%, 30%);
     --divider-color: hsl(var(--hue-color), 9%, 90%);
-    --title-color: hsl(var(--hue-color), 15% 15%);
-    --text-color: hsl(var(--hue-color), 100%, 10%);
+    --title-color: hsl(var(--hue-color), 8% 15%);
+    --text-color: hsl(var(--hue-color), 8%, 45%);
     --body-background-color : hsl(var(--hue-color), 100%, 99%);
     --link-color: hsl(var(--hue-color), 0%, 99%);
     --link-hover: var(--secondary-color);
@@ -35,9 +35,9 @@ body{
 
 [data-theme="dark"] {
     --body-background-color: hsl(var(--hue-color), 28%, 12%);
-    --text-color: var(--link-color);
+    --text-color: hsl(var(--hue-color), 8%, 75%);
     --link-color: hsl(var(--hue-color), 100%, 95%);
-    --title-color: var(--primary-color);
+    --title-color: hsl(var(--hue-color),8% , 95%);
     --divider-color: none;
   }
 
@@ -59,7 +59,7 @@ a:hover{
 }
 
 a:visited{
-    color: var(--link-visited);
+    color: hsl(var(--hue-color), 76%, 33%);
 }
 
 ul{
@@ -222,7 +222,7 @@ table{
 th{
     border: .1rem solid rgb(145, 255, 0);
     border-radius: .5rem;
-    color: var(--title-color);
+    color: hsl(var(--hue-color), 50%, 10%);
 }
 
 td{
@@ -651,7 +651,15 @@ tr:nth-child(odd){
     
 }
 
-
+.download-reload-page{
+    display: flex;
+    margin: 5rem;
+    justify-content: space-around;
+    background-color: var(--primary-color);
+    padding: 3rem;
+    border-radius: .5rem;
+    
+}
 
 @media screen and (max-width: 700px) {
 
@@ -708,6 +716,10 @@ tr:nth-child(odd){
         align-items: center;
         width: 100%;
         
+    }
+
+    .download-reload-page{
+        margin: 1rem;
     }
 
     .download{
