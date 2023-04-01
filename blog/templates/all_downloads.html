@@ -22,9 +22,9 @@
                     <td class="table-sn">{{forloop.counter}}</td>
 
                     <td>
-                        {% if download.mobile %}
-                        <a class="download-link" href="{{download.mobile.url}}"
-                        download>{{download.filename}}.apk</a>
+                        {% if download.playstore_link %}
+                        <a class="download-link" target="_blank" href="{{download.playstore_link}}"
+                        download>{{download.filename}}</a>
                         {% endif %}
                     </td>
 

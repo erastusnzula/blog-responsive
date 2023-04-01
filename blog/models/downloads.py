@@ -1,9 +1,10 @@
+from statistics import mode
 from django.db import models
 
 
 class Download(models.Model):
     filename = models.CharField(max_length=255)
-    mobile = models.FileField(upload_to='images/mobile', null=True, blank=True)
+    playstore_link = models.CharField(max_length=255)
     windows = models.FileField(upload_to='images/windows', null=True, blank=True)
     description = models.TextField(blank=True, null=True)
     added_on = models.DateTimeField(auto_now_add=True)

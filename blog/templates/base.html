@@ -19,7 +19,7 @@
 <nav class="navbar">
     <div class="container">
         <div class="navbar-brand">
-            <a href="/" class="nav-brand"><img class="brand-image" src="{% static 'images/n.png' %}" alt=""></a>
+            <a href="{% url 'blog:index-page' %}" class="nav-brand"><img class="brand-image" src="{% static 'images/t.png' %}" alt=""></a>
         </div>
         <div class="navbar-items">
             <ul class="nav-items">
@@ -36,7 +36,7 @@
                     <a class="nav-link" id="downloads-link" href="#downloads">Downloads</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link in-small-screen" id="recent-articles-link" href="/">All Articles</a>
+                    <a class="nav-link in-small-screen" id="recent-articles-link" href="{% url 'blog:index-page' %}">All Articles</a>
                 </li>
 
             </ul>
@@ -103,9 +103,9 @@
                         <td class="table-sn">{{forloop.counter}}</td>
 
                         <td>
-                            {% if download.mobile %}
-                            <a class="download-link" href="{{download.mobile.url}}"
-                               download>{{download.filename}}.apk</a>
+                            {% if download.playstore_link %}
+                            <a class="download-link" target="_blank" href="{{download.playstore_link}}"
+                               download>{{download.filename}}</a>
                             {% endif %}
                         </td>
 
